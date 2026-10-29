@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO analiza — molerski.com</title>
+<meta name="description" content="Detaljna SEO analiza sajta molerski.com (BG-MOLER, Beograd): tehnički nalaz, sadržaj, semantika, konkurencija, potencijal rasta i plan rada.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --paper:#FBF9F5; --card:#FFFFFF; --ink:#17150F; --ink-2:#4A443A; --ink-3:#7C756A;
+  --line:#E6E0D6; --line-2:#D4CCBE;
+  --accent:#C2410C; --accent-soft:#FDEEE6;
+  --crit:#B3261E; --crit-soft:#FBEAE8;
+  --warn:#A6621B; --warn-soft:#FDF2E2;
+  --ok:#1B6B3A; --ok-soft:#E8F4EC;
+  --info:#1F5F74; --info-soft:#E7F2F6;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(23,21,15,.05), 0 8px 24px -12px rgba(23,21,15,.14);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131210; --card:#1C1A17; --ink:#F2EEE6; --ink-2:#C4BDB0; --ink-3:#938B7E;
+    --line:#2E2B26; --line-2:#3C3831;
+    --accent:#F07B48; --accent-soft:#33211A;
+    --crit:#F28B82; --crit-soft:#331E1C;
+    --warn:#E0A860; --warn-soft:#30261A;
+    --ok:#7BC99B; --ok-soft:#1A2A20;
+    --info:#7FC0D6; --info-soft:#17262C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131210; --card:#1C1A17; --ink:#F2EEE6; --ink-2:#C4BDB0; --ink-3:#938B7E;
+  --line:#2E2B26; --line-2:#3C3831;
+  --accent:#F07B48; --accent-soft:#33211A;
+  --crit:#F28B82; --crit-soft:#331E1C;
+  --warn:#E0A860; --warn-soft:#30261A;
+  --ok:#7BC99B; --ok-soft:#1A2A20;
+  --info:#7FC0D6; --info-soft:#17262C;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:76px}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16.5px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px; margin:0 auto; padding:0 16px}
+
+/* ---------- nav ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(1.6) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{display:flex; align-items:center; gap:14px; height:58px; max-width:980px; margin:0 auto; padding:0 16px}
+.brandmark{display:flex; align-items:center; gap:9px; font-weight:700; letter-spacing:-.01em; white-space:nowrap}
+.dot{width:11px; height:11px; border-radius:3px; background:var(--accent); flex:none}
+.navlinks{display:flex; gap:4px; overflow-x:auto; scrollbar-width:none; margin-left:auto}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{
+  color:var(--ink-2); text-decoration:none; font-size:13.5px; font-weight:500;
+  padding:6px 10px; border-radius:8px; white-space:nowrap;
+}
+.navlinks a:hover{background:var(--accent-soft); color:var(--accent)}
+@media (max-width:760px){ .navlinks{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding:58px 0 40px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  display:inline-block; font-family:var(--mono); font-size:11.5px; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--accent);
+  background:var(--accent-soft); padding:5px 11px; border-radius:999px; margin-bottom:20px;
+}
+h1{
+  font-size:clamp(30px,6.2vw,50px); line-height:1.08; letter-spacing:-.028em;
+  margin:0 0 16px; font-weight:800;
+}
+h1 .sub{display:block; color:var(--accent); font-size:.56em; font-weight:600; letter-spacing:-.015em; margin-top:10px}
+.lede{font-size:clamp(16.5px,2.2vw,19px); color:var(--ink-2); max-width:70ch; margin:0 0 26px}
+.meta-row{display:flex; flex-wrap:wrap; gap:9px}
+.chip{
+  font-size:13px; color:var(--ink-2); background:var(--card);
+  border:1px solid var(--line); padding:5px 12px; border-radius:999px;
+}
+.chip b{color:var(--ink); font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding:52px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.sec-num{
+  font-family:var(--mono); font-size:12px; color:var(--accent);
+  letter-spacing:.1em; display:block; margin-bottom:9px;
+}
+h2{font-size:clamp(23px,3.6vw,32px); line-height:1.18; letter-spacing:-.022em; margin:0 0 14px; font-weight:750}
+h3{font-size:18.5px; letter-spacing:-.012em; margin:34px 0 12px; font-weight:700}
+h4{font-size:15.5px; margin:22px 0 8px; font-weight:700; color:var(--ink)}
+p{margin:0 0 14px; max-width:74ch}
+.muted{color:var(--ink-3); font-size:14.5px}
+a{color:var(--accent)}
+
+/* ---------- scorecards ---------- */
+.grid{display:grid; gap:12px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:720px){ .g3,.g4{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:440px){ .g2,.g3,.g4{grid-template-columns:1fr} }
+
+.stat{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:18px 16px; box-shadow:var(--shadow);
+}
+.stat .num{font-size:clamp(27px,4.4vw,36px); font-weight:800; letter-spacing:-.03em; line-height:1.05}
+.stat .lbl{font-size:13px; color:var(--ink-3); margin-top:6px; line-height:1.4}
+.stat.is-crit .num{color:var(--crit)}
+.stat.is-warn .num{color:var(--warn)}
+.stat.is-ok .num{color:var(--ok)}
+.stat.is-accent .num{color:var(--accent)}
+
+/* ---------- callouts ---------- */
+.note{
+  border-radius:var(--radius); padding:16px 18px; margin:20px 0;
+  border:1px solid var(--line); background:var(--card);
+}
+.note .t{font-weight:700; margin-bottom:5px; display:flex; align-items:center; gap:8px; font-size:15px}
+.note p{margin:0; font-size:15px; color:var(--ink-2)}
+.note p + p{margin-top:9px}
+.note.crit{background:var(--crit-soft); border-color:color-mix(in srgb,var(--crit) 32%, transparent)}
+.note.crit .t{color:var(--crit)}
+.note.warn{background:var(--warn-soft); border-color:color-mix(in srgb,var(--warn) 32%, transparent)}
+.note.warn .t{color:var(--warn)}
+.note.ok{background:var(--ok-soft); border-color:color-mix(in srgb,var(--ok) 32%, transparent)}
+.note.ok .t{color:var(--ok)}
+.note.info{background:var(--info-soft); border-color:color-mix(in srgb,var(--info) 32%, transparent)}
+.note.info .t{color:var(--info)}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); margin:20px 0; box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:540px}
+th,td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{
+  font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-3);
+  font-weight:700; background:color-mix(in srgb,var(--line) 32%, transparent); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:0}
+td code, p code, li code{
+  font-family:var(--mono); font-size:12.5px; background:color-mix(in srgb,var(--line) 50%, transparent);
+  padding:2px 6px; border-radius:5px; word-break:break-word;
+}
+.nowrap{white-space:nowrap}
+.num-c{font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+
+/* ---------- badges ---------- */
+.b{display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; letter-spacing:.03em; white-space:nowrap; text-transform:uppercase}
+.b-crit{background:var(--crit-soft); color:var(--crit); border:1px solid color-mix(in srgb,var(--crit) 32%,transparent)}
+.b-warn{background:var(--warn-soft); color:var(--warn); border:1px solid color-mix(in srgb,var(--warn) 32%,transparent)}
+.b-info{background:var(--info-soft); color:var(--info); border:1px solid color-mix(in srgb,var(--info) 32%,transparent)}
+.b-ok{background:var(--ok-soft); color:var(--ok); border:1px solid color-mix(in srgb,var(--ok) 32%,transparent)}
+
+/* ---------- bars ---------- */
+.bar{height:9px; border-radius:999px; background:color-mix(in srgb,var(--line) 70%, transparent); overflow:hidden; margin:8px 0 3px}
+.bar > i{display:block; height:100%; border-radius:999px; background:var(--accent)}
+.bar.ok > i{background:var(--ok)}
+.barlabel{display:flex; justify-content:space-between; font-size:13px; color:var(--ink-3)}
+.barlabel b{color:var(--ink); font-weight:650}
+
+/* ---------- lists ---------- */
+ul.clean{list-style:none; padding:0; margin:14px 0}
+ul.clean li{position:relative; padding-left:26px; margin-bottom:10px; font-size:15.5px; color:var(--ink-2); max-width:74ch}
+ul.clean li::before{
+  content:""; position:absolute; left:4px; top:9px;
+  width:7px; height:7px; border-radius:2px; background:var(--accent);
+}
+ul.clean li b{color:var(--ink)}
+ul.check li::before{background:var(--ok)}
+ul.cross li::before{background:var(--crit)}
+ol.steps{counter-reset:s; list-style:none; padding:0; margin:16px 0}
+ol.steps li{
+  counter-increment:s; position:relative; padding-left:42px; margin-bottom:14px;
+  font-size:15.5px; color:var(--ink-2); max-width:74ch;
+}
+ol.steps li::before{
+  content:counter(s); position:absolute; left:0; top:-1px;
+  width:27px; height:27px; border-radius:8px; background:var(--accent-soft); color:var(--accent);
+  display:grid; place-items:center; font-size:13px; font-weight:800; font-family:var(--mono);
+}
+ol.steps li b{color:var(--ink)}
+
+/* ---------- phase cards ---------- */
+.phase{
+  background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+  border-radius:var(--radius); padding:20px 22px; margin:14px 0; box-shadow:var(--shadow);
+}
+.phase .ph-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:6px}
+.phase .ph-when{font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.06em; text-transform:uppercase}
+.phase h3{margin:0; font-size:19px}
+.phase .ph-goal{font-size:14px; color:var(--ink-3); margin:0 0 12px}
+.phase ul.clean{margin:0}
+.phase ul.clean li{font-size:15px; margin-bottom:7px}
+
+/* ---------- scenario ---------- */
+.scen{
+  background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:3px;
+}
+.scen.hl{border-color:var(--accent); border-width:2px}
+.scen .tag{font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-3); margin-bottom:8px}
+.scen.hl .tag{color:var(--accent)}
+.scen .big{font-size:30px; font-weight:800; letter-spacing:-.03em; line-height:1.1}
+.scen .cap{font-size:13.5px; color:var(--ink-3); margin-bottom:10px}
+.scen .row{display:flex; justify-content:space-between; gap:12px; font-size:14px; padding:6px 0; border-top:1px solid var(--line)}
+.scen .row span{color:var(--ink-3)}
+.scen .row b{font-variant-numeric:tabular-nums}
+
+/* ---------- price ---------- */
+.pricebox{
+  background:var(--card); border:2px solid var(--accent); border-radius:18px;
+  padding:26px; box-shadow:var(--shadow); margin:22px 0;
+}
+.pricebox .amt{font-size:clamp(34px,6vw,46px); font-weight:800; letter-spacing:-.035em; color:var(--accent); line-height:1}
+.pricebox .amt small{font-size:.38em; font-weight:600; color:var(--ink-3); letter-spacing:0}
+
+.cta{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:12px 26px; border-radius:10px; font-weight:700; font-size:15.5px; margin-top:6px;
+}
+.cta:hover{filter:brightness(1.08)}
+
+footer{padding:38px 0 52px; color:var(--ink-3); font-size:14px; border-top:1px solid var(--line)}
+footer a{color:var(--ink-2)}
+
+hr.soft{border:0; border-top:1px solid var(--line); margin:30px 0}
+
+@media print{
+  .topbar{display:none}
+  body{font-size:11pt; background:#fff; color:#000}
+  section{page-break-inside:avoid; padding:20px 0}
+  .stat,.phase,.scen,.note,.tablewrap{box-shadow:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brandmark"><span class="dot"></span> molerski.com</div>
+    <nav class="navlinks">
+      <a href="#rezime">Rezime</a>
+      <a href="#tehnika">Tehnika</a>
+      <a href="#sadrzaj">Sadržaj</a>
+      <a href="#konverzija">Konverzija</a>
+      <a href="#semantika">Semantika</a>
+      <a href="#konkurencija">Konkurencija</a>
+      <a href="#potencijal">Potencijal</a>
+      <a href="#plan">Plan</a>
+      <a href="#oglasavanje">Oglašavanje</a>
+      <a href="#saradnja">Saradnja</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">SEO analiza · oktobar 2026</span>
+    <h1>molerski.com
+      <span class="sub">Gde sajt stoji danas i šta mu nedostaje da donosi posao</span>
+    </h1>
+    <p class="lede">
+      Analizirali smo sajt BG-MOLER-a u celini: tehničko stanje, sadržaj, strukturu, komercijalne
+      elemente i potražnju na tržištu. Ovaj dokument pokazuje tri stvari — gde se gubi posao,
+      koliko tražnje stoji nepokriveno i kojim redom to rešavamo.
+    </p>
+    <div class="meta-row">
+      <span class="chip"><b>Domen:</b> molerski.com</span>
+      <span class="chip"><b>Delatnost:</b> molerski i gipsani radovi</span>
+      <span class="chip"><b>Lokacija:</b> Novi Beograd, Vinogradska 36</span>
+      <span class="chip"><b>Alati:</b> Screaming Frog, Parsi, ručna provera</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ 1. REZIME ============ -->
+<section id="rezime">
+  <span class="sec-num">01 — REZIME</span>
+  <h2>Stanje u brojkama</h2>
+  <p>
+    Sajt je tehnički ispravan u smislu da radi i otvara se brzo. Problem je drugi: on je
+    <b>nevidljiv za pretragu</b> i <b>ne pretvara posetioce u pozive</b>. Oba problema se rešavaju,
+    i oba su, većim delom, jeftina za rešavanje.
+  </p>
+
+  <div class="grid g4" style="margin-top:22px">
+    <div class="stat is-warn"><div class="num">10</div><div class="lbl">stranica ukupno na sajtu</div></div>
+    <div class="stat is-crit"><div class="num">76</div><div class="lbl">pronađenih tehničkih grešaka</div></div>
+    <div class="stat is-crit"><div class="num">13%</div><div class="lbl">pokrivenost tražnje ključnim rečima</div></div>
+    <div class="stat is-crit"><div class="num">0</div><div class="lbl">formi za kontakt na celom sajtu</div></div>
+  </div>
+
+  <div class="grid g4" style="margin-top:12px">
+    <div class="stat is-crit"><div class="num">235</div><div class="lbl">upita bez ijedne stranice koja ih pokriva</div></div>
+    <div class="stat is-crit"><div class="num">0/10</div><div class="lbl">stranica sa <code>canonical</code> oznakom</div></div>
+    <div class="stat is-crit"><div class="num">0/10</div><div class="lbl">stranica sa schema.org podacima</div></div>
+    <div class="stat is-warn"><div class="num">4</div><div class="lbl">neispravna linka (404) u kodu</div></div>
+  </div>
+
+  <h3>Pet nalaza koji najviše koštaju</h3>
+  <ol class="steps">
+    <li><b>Nema nijedne forme za kontakt.</b> Svaki posetilac mora sam da pozove. Ko ne zove odmah — odlazi i ne vraća se. Ovo je najskuplja pojedinačna greška na sajtu.</li>
+    <li><b>Sajt pokriva 13% tražnje u svojoj niši.</b> Od 272 upita koje ljudi u Beogradu zaista pretražuju, sajt ima stranicu za 36. Ostalih 235 ide konkurenciji.</li>
+    <li><b>Google ne razume da ste lokalna firma.</b> Nema strukturiranih podataka (schema.org), nema potvrđenog Google profila sa recenzijama. U ovoj delatnosti polovina klikova ide preko mape.</li>
+    <li><b>Cela prezentacija je svedena na Novi Beograd</b>, iako naslovi obećavaju Beograd. Nijedne stranice za Zemun, Voždovac, Vračar, Zvezdaru, Čukaricu. To je najveći neiskorišćen potencijal.</li>
+    <li><b>Dekorativne tehnike — najskuplja usluga (12–20 €/m²) — nemaju svoju stranicu.</b> Spomenute su u jednom pasusu i u cenovniku. Za pretragu praktično ne postoje.</li>
+  </ol>
+
+  <div class="note info">
+    <div class="t">Napomena o podacima</div>
+    <p>Analiza je rađena na osnovu kompletnog obilaska sajta (69 adresa), tehničke provere svake
+      stranice i mape tražnje od 272 upita za Beograd. Podaci iz Google Search Console-a nisu bili
+      dostupni — kada dobijemo pristup, projekcije u sekciji 07 se precizno potvrđuju ili koriguju
+      u prvih mesec dana.</p>
+  </div>
+</section>
+
+<!-- ============ 2. TEHNIKA ============ -->
+<section id="tehnika">
+  <span class="sec-num">02 — TEHNIČKI NALAZ</span>
+  <h2>Šta sprečava Google da sajt razume</h2>
+  <p>
+    Obišli smo 69 adresa na domenu: 10 HTML stranica, 36 slika, 18 skripti. Sajt odgovara brzo
+    (prosek 0,27 s) i to je dobra osnova. Sve ostalo ispod je ono što nedostaje ili je pogrešno
+    postavljeno.
+  </p>
+
+  <h3>Kritično — rešava se odmah</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Nalaz</th><th>Obim</th><th>Zašto je važno</th><th class="nowrap">Težina</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Nema <code>sitemap.xml</code></b></td>
+          <td class="nowrap">ceo sajt</td>
+          <td>Google nema spisak stranica sajta. Nove stranice se indeksiraju sporije ili uopšte ne.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Nema <code>robots.txt</code></b></td>
+          <td class="nowrap">ceo sajt</td>
+          <td>Nema uputstva pretraživačima niti pokazivača ka mapi sajta.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Nema <code>canonical</code> oznake</b></td>
+          <td class="nowrap">10 od 10</td>
+          <td>Ista stranica dostupna na više adresa deli svoju težinu. Potvrđeno: <code>/</code>, <code>/index.html</code> i <code>/?utm_source=…</code> su tri adrese sa istim sadržajem.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Nema schema.org podataka</b></td>
+          <td class="nowrap">10 od 10</td>
+          <td>Google ne vidi da ste lokalna firma sa adresom, telefonom i radnim vremenom. Bez toga nema prikaza sa ocenama i nema prednosti u mapi.</td>
+          <td><span class="b b-warn">srednje</span></td>
+        </tr>
+        <tr>
+          <td><b><code>lang="en"</code> na srpskom sajtu</b></td>
+          <td class="nowrap">10 od 10</td>
+          <td>Sajt se deklariše kao engleski. Smeta ciljanju na srpsko tržište.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Link ka <code>/services</code> vodi na 404</b></td>
+          <td class="nowrap">6 stranica</td>
+          <td>Stavka „O nama / Naše usluge“ u meniju vodi na nepostojeću stranicu — sa šest različitih mesta na sajtu.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Važno — u prvom mesecu</h3>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Nalaz</th><th>Obim</th><th>Zašto je važno</th><th class="nowrap">Težina</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Više <code>&lt;h1&gt;</code> naslova po stranici</b></td>
+          <td class="nowrap">10 od 10</td>
+          <td>Po 3–4 glavna naslova umesto jednog. Google ne zna koja je tema stranice.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Slike bez <code>alt</code> opisa</b></td>
+          <td class="nowrap">9 od 10</td>
+          <td>Galerija: 29 od 29 slika bez opisa. Kontakt: 30 od 30. Početna: 5 od 5. Gubi se celokupan saobraćaj iz pretrage slika i narušava pristupačnost.</td>
+          <td><span class="b b-warn">srednje</span></td>
+        </tr>
+        <tr>
+          <td><b>Tanak sadržaj</b></td>
+          <td class="nowrap">7 od 10</td>
+          <td>Početna ima 190 reči, cenovnik 144, kontakt 63, galerija 68. Za konkurentne upite to nije dovoljno.</td>
+          <td><span class="b b-crit">zahtevnije</span></td>
+        </tr>
+        <tr>
+          <td><b>Naslovi prekratki ili predugi</b></td>
+          <td class="nowrap">6 od 10</td>
+          <td><code>Moler Beograd  Krecenje</code> — 23 znaka, bez lokacije i bez reči „cena“. Početna i njen duplikat: 67 znakova, Google ih seče.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Duple slike i tri neiskorišćene adrese</b></td>
+          <td class="nowrap">4 linka</td>
+          <td><code>/slike/k-3.jp</code> (nedostaje slovo), <code>/slike/20.jpg.jpg</code>, <code>/js/selectnav.js</code> — sve 404.</td>
+          <td><span class="b b-ok">lako</span></td>
+        </tr>
+        <tr>
+          <td><b>Slike nisu optimizovane</b></td>
+          <td class="nowrap">2,41 MB</td>
+          <td>36 slika, najteža 113 KB, sve u starom formatu iz 2020. Uz WebP/AVIF i kompresiju — ušteda oko 70% bez gubitka kvaliteta.</td>
+          <td><span class="b b-warn">srednje</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Pozadinski nalazi</h3>
+  <ul class="clean">
+    <li><b>Server radi na HTTP/1.1.</b> Prelazak na HTTP/2 ubrzava učitavanje stranice sa 18 skripti i desetak slika, bez ijedne izmene u kodu.</li>
+    <li><b>Nema sigurnosnih zaglavlja</b> (<code>HSTS</code>, <code>CSP</code>, <code>X-Frame-Options</code>) ni na jednoj stranici.</li>
+    <li><b>Nema Open Graph oznaka.</b> Kada neko podeli link sajta na Facebooku, Viberu ili WhatsAppu — ne prikazuje se ni slika ni opis, samo goli link.</li>
+    <li><b>Šablon sajta je iz jula 2020.</b> jQuery stek od 18 datoteka i 311 KB skripti radi posao koji danas rade dve-tri datoteke.</li>
+  </ul>
+
+  <div class="note ok">
+    <div class="t">Šta je dobro i ne treba dirati</div>
+    <p>Adrese stranica su čiste i čitljive (<code>/krecenje</code>, <code>/izrada-fasada</code>) — to je
+      solidna osnova koju zadržavamo. HTTPS radi. Vreme odgovora servera je odlično, prosečno 0,27 s.
+      Struktura menija je logična. Postoji galerija sa 29 fotografija stvarnih radova — to je vredan
+      materijal koji trenutno stoji neiskorišćen.</p>
+  </div>
+</section>
+
+<!-- ============ 3. SADRZAJ ============ -->
+<section id="sadrzaj">
+  <span class="sec-num">03 — SADRŽAJ I STRUKTURA</span>
+  <h2>Stranice postoje, ali ne rade svoj posao</h2>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Stranica</th><th class="num-c">Reči</th><th class="num-c">Naslov</th><th>Glavni problem</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>/</code> početna</td><td class="num-c">190</td><td class="num-c">67 zn.</td><td>Previše kratka za glavnu stranicu, 4 <code>h1</code>, 5/5 slika bez opisa, naslov predug</td></tr>
+        <tr><td><code>/krecenje</code></td><td class="num-c">357</td><td class="num-c">23 zn.</td><td>Naslov prekratak i bez lokacije; opis sadrži greške u kucanju</td></tr>
+        <tr><td><code>/gletovanje</code></td><td class="num-c">317</td><td class="num-c">25 zn.</td><td>Tanak sadržaj; nema cena ni primera radova na stranici</td></tr>
+        <tr><td><code>/pregradni-zidovi</code></td><td class="num-c">358</td><td class="num-c">46 zn.</td><td>Ne odgovara na glavno pitanje kupca — zvučnu izolaciju</td></tr>
+        <tr><td><code>/spusteni-plafoni</code></td><td class="num-c">349</td><td class="num-c">46 zn.</td><td>Nema LED rasvete u plafonu, a to je ono što se najviše traži</td></tr>
+        <tr><td><code>/izrada-fasada</code></td><td class="num-c">321</td><td class="num-c">28 zn.</td><td>Ne pominje „demit fasadu“ — narodni naziv koji ljudi zaista kucaju</td></tr>
+        <tr><td><code>/cena</code></td><td class="num-c">144</td><td class="num-c">35 zn.</td><td>Samo brojevi, bez objašnjenja i bez primera za konkretan stan</td></tr>
+        <tr><td><code>/gallery</code></td><td class="num-c">68</td><td class="num-c">29 zn.</td><td>29 fotografija, sve bez opisa, nijedna nije vezana za uslugu</td></tr>
+        <tr><td><code>/contact</code></td><td class="num-c">63</td><td class="num-c">30 zn.</td><td>Nema forme; mapa se ne učitava</td></tr>
+        <tr><td><code>/services</code></td><td class="num-c">—</td><td class="num-c">—</td><td><span class="b b-crit">404</span> stranica ne postoji, a 6 stranica vodi na nju</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Greške u tekstu koje vide i Google i klijent</h3>
+  <p>
+    Ovo nisu sitnice. Opis stranice je ono što čovek pročita u rezultatima pretrage pre nego što
+    odluči da klikne. Greška u toj rečenici direktno smanjuje broj klikova.
+  </p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gde</th><th>Trenutno</th><th>Treba</th></tr></thead>
+      <tbody>
+        <tr><td>Opis stranice <code>/krecenje</code></td><td><code>Sve vrste krecenjka i farbbanja</code></td><td><code>krečenja i farbanja</code></td></tr>
+        <tr><td>Podnožje, sve stranice</td><td><code>Kotnaktiraj te nas</code></td><td><code>Kontaktirajte nas</code></td></tr>
+        <tr><td>Dugme za zakazivanje</td><td><code>zakzaivanje</code></td><td><code>Zakažite termin</code></td></tr>
+        <tr><td>Blok „Ko smo mi“</td><td><code>preko 20 godina iskusta</code></td><td><code>iskustva</code></td></tr>
+        <tr><td>Naslovi stranica</td><td>duplo prazno mesto: <code>Moler Beograd&nbsp;&nbsp;Krecenje</code></td><td>jedno prazno mesto</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Protivrečnost na istoj stranici</div>
+    <p>U zaglavlju početne stranice piše <b>„30 GODINA ISKUSTVA“</b>, a nekoliko ekrana niže, u bloku
+      „Ko smo mi“, piše <b>„preko 20 godina iskustva“</b>. Posetilac koji primeti razliku gubi poverenje
+      upravo u trenutku kada odlučuje da li da pozove. Treba izabrati jedan broj i držati ga svuda.</p>
+  </div>
+
+  <h3>Čitljivost</h3>
+  <p>
+    Alat za merenje čitljivosti ocenjuje tekst na pet od šest stranica sa uslugama kao
+    <b>„veoma težak“</b>. Rečenice su predugačke — prosečno 5,7 rečenica po pasusu bez prelaza.
+    Čovek koji na telefonu traži molera ne čita pasuse, on skenira. Tekst treba razbiti na kraće
+    celine, dodati podnaslove, spisak onoga što je uključeno u cenu i odgovore na česta pitanja.
+  </p>
+</section>
+
+<!-- ============ 4. KONVERZIJA ============ -->
+<section id="konverzija">
+  <span class="sec-num">04 — KOMERCIJALNI ELEMENTI</span>
+  <h2>Posetilac dolazi — i nema šta da uradi</h2>
+  <p>
+    Ovo je sekcija gde se gubi najviše novca, i to bez obzira na pretragu. Čak i da sutra dovedemo
+    duplo više posetilaca, oni bi naišli na isti zid.
+  </p>
+
+  <div class="grid g2" style="margin-top:20px">
+    <div class="note crit" style="margin:0">
+      <div class="t">Nijedna forma na sajtu</div>
+      <p>Obilazak je potvrdio: nula formi na svih 10 stranica. Dugme „Zakazivanje termina“ vodi na
+        stranicu kontakta gde takođe nema forme — samo broj telefona.</p>
+      <p>Deo ljudi neće zvati: zovu uveče kad ste zatvoreni, na poslu su, ne znaju kvadraturu, ili
+        jednostavno ne vole da zovu nepoznate brojeve. Taj deo danas odlazi kod konkurencije.</p>
+    </div>
+    <div class="note crit" style="margin:0">
+      <div class="t">Mapa na stranici kontakta ne radi</div>
+      <p>Umesto mape prikazuje se poruka o grešci: nedostaje Google ključ. Posetilac koji proverava
+        gde ste vidi obaveštenje o kvaru na sajtu.</p>
+      <p>Rešenje traje petnaestak minuta, a tiče se prve stranice koju gleda svako ko je spreman
+        da naruči.</p>
+    </div>
+  </div>
+
+  <h3>Šta još nedostaje</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Element</th><th class="nowrap">Status</th><th>Šta donosi</th></tr></thead>
+      <tbody>
+        <tr><td>Forma za zahtev ponude</td><td><span class="b b-crit">nema</span></td><td>Hvata posetioce koji neće da zovu. Najveći pojedinačni dobitak na sajtu.</td></tr>
+        <tr><td>WhatsApp / Viber dugme</td><td><span class="b b-crit">nema</span></td><td>U ovoj delatnosti većina pita preko poruke, često uz fotografiju zida.</td></tr>
+        <tr><td>Recenzije klijenata</td><td><span class="b b-crit">nema</span></td><td>Glavni argument kod izbora majstora. Bez njih poredite se samo po ceni.</td></tr>
+        <tr><td>Google profil firme</td><td><span class="b b-warn">nije potvrđen</span></td><td>Pola klikova u ovoj niši ide preko mape, pre nego što se otvori ijedan sajt.</td></tr>
+        <tr><td>Kalkulator cene</td><td><span class="b b-crit">nema</span></td><td>„Koliko košta krečenje stana od 60 m²“ — jedno od najčešćih pitanja. Kalkulator na to odgovara i istovremeno uzima kontakt.</td></tr>
+        <tr><td>Fotografije „pre i posle“</td><td><span class="b b-warn">delimično</span></td><td>Galerija ima 29 fotografija, ali nisu vezane za usluge niti za konkretan objekat.</td></tr>
+        <tr><td>Poslovna e-adresa</td><td><span class="b b-warn">gmail</span></td><td>Adresa na sopstvenom domenu deluje ozbiljnije, posebno kod poslovnih klijenata i upravnika zgrada.</td></tr>
+        <tr><td>Stranica „O nama“</td><td><span class="b b-crit">404</span></td><td>Postoji u meniju, ali ne postoji kao stranica. Tim, iskustvo i licence su ono čime se prodaje poverenje.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note info">
+    <div class="t">O cenovniku</div>
+    <p>Vaše cene — krečenje 2–3,5 €/m², gletovanje sa krečenjem 5–8 €/m², fasada sa stiroporom
+      12 €/m² — su <b>u skladu sa beogradskim tržištem</b>. To znači da niste najjeftiniji i da
+      borba cenom nema smisla. Prednost se gradi na poverenju: recenzije, fotografije radova,
+      jasno objašnjenje šta je u ceni, i činjenica da se izlazak na teren ne naplaćuje — što već
+      imate, ali je sakriveno u podnaslovu stranice kontakta umesto da stoji na vrhu početne.</p>
+    <p>Jedna stvar se mora rešiti otvoreno: u cenovniku piše da su cene fasade <b>bez skele</b>.
+      Klijent to shvati tek kasnije i oseti se prevarenim. Bolje je objasniti unapred, sa okvirnom
+      cenom skele — to gradi poverenje umesto da ga ruši.</p>
+  </div>
+</section>
+
+<!-- ============ 5. SEMANTIKA ============ -->
+<section id="semantika">
+  <span class="sec-num">05 — TRAŽNJA I POKRIVENOST</span>
+  <h2>272 upita, pokriveno 36</h2>
+  <p>
+    Sastavili smo mapu onoga što ljudi u Beogradu zaista pretražuju kada im treba moler, gletovanje,
+    gipsani radovi ili fasada — 272 upita, razvrstanih u 13 grupa. Zatim smo proverili koliko njih
+    ima odgovarajuću stranicu na sajtu.
+  </p>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="stat is-ok"><div class="num">36</div><div class="lbl">upita ima stranicu koja ih pokriva</div></div>
+    <div class="stat is-crit"><div class="num">235</div><div class="lbl">upita nema nijednu stranicu</div></div>
+    <div class="stat is-accent"><div class="num">111</div><div class="lbl">novih stranica koje treba napraviti</div></div>
+  </div>
+
+  <div style="margin-top:26px">
+    <div class="barlabel"><span>Pokrivenost tražnje danas</span><b>13%</b></div>
+    <div class="bar"><i style="width:13%"></i></div>
+    <div class="barlabel"><span>Cilj na 12 meseci</span><b>70–80%</b></div>
+    <div class="bar ok"><i style="width:75%"></i></div>
+  </div>
+
+  <h3>Gde tačno stoji nepokrivena tražnja</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Grupa upita</th><th class="num-c">Upita</th><th class="nowrap">Stanje</th><th>Komentar</th></tr></thead>
+      <tbody>
+        <tr><td><b>Lokacije po opštinama</b></td><td class="num-c">106</td><td><span class="b b-crit">0 stranica</span></td><td>Zemun, Voždovac, Vračar, Zvezdara, Čukarica i još 21 deo grada. Najveći pojedinačni izvor rasta.</td></tr>
+        <tr><td><b>Krečenje</b></td><td class="num-c">30</td><td><span class="b b-warn">1 stranica</span></td><td>Stranica postoji, ali ne pokriva upite sa cenom i kvadraturom.</td></tr>
+        <tr><td><b>Informativni upiti / blog</b></td><td class="num-c">21</td><td><span class="b b-crit">0 stranica</span></td><td>„Koliko košta krečenje stana“ i slično. Danas na te upite odgovaraju novinski portali, ne majstori.</td></tr>
+        <tr><td><b>Opšta potražnja za molerom</b></td><td class="num-c">19</td><td><span class="b b-warn">početna</span></td><td>Najvredniji upiti idu na stranicu od 190 reči bez poziva na akciju.</td></tr>
+        <tr><td><b>Fasade i termoizolacija</b></td><td class="num-c">17</td><td><span class="b b-warn">1 stranica</span></td><td>Nema „demit fasada“, „kamena vuna“, „cena po m²“ — a to su upiti sa najvećim prosečnim računom.</td></tr>
+        <tr><td><b>Gletovanje</b></td><td class="num-c">16</td><td><span class="b b-warn">1 stranica</span></td><td>Nedostaje veza „gletovanje + krečenje“, a to je najčešća porudžbina.</td></tr>
+        <tr><td><b>Dekorativne tehnike</b></td><td class="num-c">13</td><td><span class="b b-crit">0 stranica</span></td><td>Najskuplja usluga u cenovniku, bez ijedne stranice.</td></tr>
+        <tr><td><b>Poslovni prostori (B2B)</b></td><td class="num-c">11</td><td><span class="b b-crit">0 stranica</span></td><td>Veći računi, ravnomerniji posao tokom godine, mogućnost ugovora o održavanju.</td></tr>
+        <tr><td><b>Gipsani radovi (zajednička stranica)</b></td><td class="num-c">8</td><td><span class="b b-crit">0 stranica</span></td><td>Izraz stoji u naslovu početne, ali stranice nema.</td></tr>
+        <tr><td><b>Renoviranje i adaptacija</b></td><td class="num-c">9</td><td><span class="b b-crit">0 stranica</span></td><td>Šira tražnja — ljudi koji još ne znaju šta im tačno treba.</td></tr>
+        <tr><td><b>Spušteni plafoni</b></td><td class="num-c">9</td><td><span class="b b-ok">1 stranica</span></td><td>Najbolje pokrivena grupa na sajtu.</td></tr>
+        <tr><td><b>Pregradni zidovi</b></td><td class="num-c">9</td><td><span class="b b-warn">1 stranica</span></td><td>Nedostaje zvučna izolacija — glavno pitanje klijenata.</td></tr>
+        <tr><td><b>Brend</b></td><td class="num-c">4</td><td><span class="b b-warn">početna</span></td><td>Ime BG-MOLER nigde nije potvrđeno strukturiranim podacima.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note warn">
+    <div class="t">Sajt sam sebe ograničava na jednu opštinu</div>
+    <p>U svakom glavnom naslovu i u podnožju svih deset stranica piše <b>„Molerski radovi Novi Beograd“</b>,
+      dok naslovi u pretrazi obećavaju <b>Beograd</b>. Google prati ono što je u sadržaju, a ne ono što
+      je u naslovu — i zaključuje da pokrivate jednu opštinu.</p>
+    <p>Rešenje nije da se obriše Novi Beograd, nego da se napravi mreža stranica po delovima grada.
+      Ne svih 26 odjednom — prvo šest najgušćih, zatim prema rezultatima.</p>
+  </div>
+</section>
+
+<!-- ============ 6. KONKURENCIJA ============ -->
+<section id="konkurencija">
+  <span class="sec-num">06 — KONKURENCIJA</span>
+  <h2>Ko danas uzima vaše klijente</h2>
+  <p>
+    Pretraga u ovoj niši podeljena je na tri sloja, i ni u jednom BG-MOLER danas nije prisutan.
+  </p>
+
+  <div class="grid g3" style="margin-top:20px">
+    <div class="scen">
+      <div class="tag">Sloj 1</div>
+      <div class="big" style="font-size:21px">Oglasni portali</div>
+      <p class="cap">Halo Oglasi, Moj Majstor, 4zida</p>
+      <p class="muted" style="margin:0">Zauzimaju vrh po komercijalnim upitima. Prednost im je obim, a ne kvalitet. Slabost: majstor je tamo jedan red u spisku, bez identiteta, i plaća za svaki kontakt.</p>
+    </div>
+    <div class="scen">
+      <div class="tag">Sloj 2</div>
+      <div class="big" style="font-size:21px">Mediji</div>
+      <p class="cap">Kurir, Blic, Nova</p>
+      <p class="muted" style="margin:0">Drže upite o cenama — „koliko košta krečenje stana od 60 kvadrata“. Oni ne prodaju uslugu, samo pišu o cenama. Tu postoji otvoren prostor za firmu sa pravim brojevima.</p>
+    </div>
+    <div class="scen hl">
+      <div class="tag">Sloj 3</div>
+      <div class="big" style="font-size:21px">Direktni konkurenti</div>
+      <p class="cap">Beogradske molerske firme</p>
+      <p class="muted" style="margin:0">Mali broj njih ima ozbiljno urađen sajt. Većina je na istom nivou kao molerski.com — šablon star nekoliko godina, bez recenzija i strukturiranih podataka.</p>
+    </div>
+  </div>
+
+  <div class="note ok" style="margin-top:22px">
+    <div class="t">Šta to praktično znači</div>
+    <p>Niša nije zauzeta od strane jakih igrača. Nema velike firme koja je „pokupila“ pretragu i
+      protiv koje bi se godinama borili. Prepreka za ulazak je niska — ono što treba uraditi je
+      poznato i izvodljivo: tehnički red, mreža stranica po delovima grada, recenzije i profil na
+      mapi, i sadržaj koji odgovara na pitanja o ceni.</p>
+    <p>Prozor neće stajati otvoren zauvek. Ko prvi uradi ovaj posao, uzima poziciju za nekoliko
+      godina unapred — u pretrazi se prvo mesto teško preuzima.</p>
+  </div>
+
+  <h3>Vaše prednosti koje sajt danas ne koristi</h3>
+  <ul class="clean check">
+    <li><b>Iskustvo i domaće i zapadnoevropsko tržište.</b> Rečenica stoji u jednom pasusu, nigde drugde.</li>
+    <li><b>Izlazak na teren se ne naplaćuje.</b> Jak argument, sakriven u podnaslovu stranice kontakta.</li>
+    <li><b>Pokriven je ceo opseg radova</b> — od pripreme zida do fasade. Klijent ne mora da traži više izvođača, a to se nigde ne ističe.</li>
+    <li><b>29 fotografija stvarnih radova.</b> Materijal postoji, samo nije opisan, razvrstan ni vezan za usluge.</li>
+    <li><b>Radno vreme do 19 h, subotom takođe.</b> Konkurencija uglavnom radi do 17 h. Ovo je prodajni argument koji nigde ne stoji istaknuto.</li>
+  </ul>
+</section>
+
+<!-- ============ 7. POTENCIJAL ============ -->
+<section id="potencijal">
+  <span class="sec-num">07 — POTENCIJAL</span>
+  <h2>Šta ovo može da donese</h2>
+  <p>
+    Projekcija ispod polazi od pokrivenosti tražnje, a ne od obećanja. Danas sajt pokriva 13% upita
+    u svojoj niši. Svaka nova stranica koja pokrije jednu grupu upita dodaje svoj deo saobraćaja,
+    a svaki popravljen element na stranici povećava udeo onih koji se jave.
+  </p>
+
+  <div class="grid g3" style="margin-top:22px">
+    <div class="scen">
+      <div class="tag">3 meseca</div>
+      <div class="big">Temelj</div>
+      <p class="cap">tehnika, konverzija, prve stranice</p>
+      <div class="row"><span>Pokrivenost upita</span><b>13% → 30%</b></div>
+      <div class="row"><span>Nove stranice</span><b>12–16</b></div>
+      <div class="row"><span>Zahtevi sa sajta</span><b>prvi merljivi</b></div>
+    </div>
+    <div class="scen hl">
+      <div class="tag">6 meseci</div>
+      <div class="big">Rast</div>
+      <p class="cap">mreža po delovima grada, sadržaj</p>
+      <div class="row"><span>Pokrivenost upita</span><b>30% → 55%</b></div>
+      <div class="row"><span>Nove stranice</span><b>40–50 ukupno</b></div>
+      <div class="row"><span>Mapa i recenzije</span><b>aktivni</b></div>
+    </div>
+    <div class="scen">
+      <div class="tag">12 meseci</div>
+      <div class="big">Pozicija</div>
+      <p class="cap">stabilan tok zahteva</p>
+      <div class="row"><span>Pokrivenost upita</span><b>70–80%</b></div>
+      <div class="row"><span>Nove stranice</span><b>90–110 ukupno</b></div>
+      <div class="row"><span>Kanal</span><b>samostalan</b></div>
+    </div>
+  </div>
+
+  <h3>Tri efekta koja se sabiraju</h3>
+  <ol class="steps">
+    <li><b>Više ljudi vidi sajt.</b> Sa 10 stranica na 100+, svaka za svoj upit i svoj deo grada. Ovo je spor, ali trajan efekat — stranica napravljena danas donosi posetioce i za tri godine.</li>
+    <li><b>Više njih vas uopšte nađe lokalno.</b> Strukturirani podaci i potvrđen profil na mapi sa recenzijama otvaraju kanal koji danas ne postoji. U delatnosti poput vaše to je često polovina svih kontakata.</li>
+    <li><b>Više njih se javi.</b> Forma, dugme za poruku, kalkulator cene, recenzije i radovi „pre i posle“ — isti broj posetilaca daje nekoliko puta više zahteva. Ovaj efekat je najbrži: vidi se u prvih mesec dana.</li>
+  </ol>
+
+  <div class="note info">
+    <div class="t">Iskreno o brojevima</div>
+    <p>Ne obećavamo konkretan broj poziva, jer bi to bilo nagađanje. Pristup Google Search Console-u
+      i Google profilu firme daje nam stvarne podatke, i posle prvog meseca projekcija prelazi u
+      merenje: koliko prikaza, koliko klikova, koliko zahteva, po kojoj ceni.</p>
+    <p>Ono što se može reći pouzdano: <b>235 upita danas ne vodi nigde</b>, a svaki od njih je neko
+      ko u ovom trenutku traži uslugu koju vi pružate.</p>
+  </div>
+</section>
+
+<!-- ============ 8. PLAN ============ -->
+<section id="plan">
+  <span class="sec-num">08 — PLAN RADA</span>
+  <h2>Kojim redom radimo</h2>
+  <p>Red nije proizvoljan: prvo ono što donosi rezultat najbrže i košta najmanje, zatim ono što gradi dugoročnu poziciju.</p>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-when">Mesec 1</span><h3>Zaustaviti gubitke</h3></div>
+    <p class="ph-goal">Cilj: da posetilac koji već dolazi ima gde da ostavi kontakt, i da Google razume ko ste.</p>
+    <ul class="clean">
+      <li>Forma za zahtev ponude na svakoj stranici usluge + dugme za WhatsApp/Viber</li>
+      <li>Popravka mape na stranici kontakta i kompletne stranice „O nama“ umesto 404</li>
+      <li><code>sitemap.xml</code>, <code>robots.txt</code>, <code>canonical</code> na svim stranicama, <code>lang="sr"</code></li>
+      <li>Strukturirani podaci: lokalna firma, usluge, cene, česta pitanja</li>
+      <li>Potvrda i uređenje Google profila firme, pokretanje prikupljanja recenzija</li>
+      <li>Jedan <code>h1</code> po stranici, prepravljeni naslovi i opisi za svih 10 stranica</li>
+      <li>Ispravka svih grešaka u kucanju i usklađivanje podatka o godinama iskustva</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-when">Meseci 2–3</span><h3>Pokriti ono što donosi novac</h3></div>
+    <p class="ph-goal">Cilj: stranice za usluge i delove grada sa najvećom tražnjom.</p>
+    <ul class="clean">
+      <li>Nova stranica: <b>dekorativne tehnike</b> — najskuplja usluga, danas bez stranice</li>
+      <li>Nova stranica: <b>gipsani radovi</b> kao zajednička, iznad plafona i pregradnih zidova</li>
+      <li>Proširenje postojećih šest stranica usluga na 800–1200 reči sa cenama, rokovima i pitanjima</li>
+      <li>Prvih šest stranica po delovima grada: Zemun, Voždovac, Vračar, Zvezdara, Čukarica, Novi Beograd</li>
+      <li>Opisi za svih 29 fotografija u galeriji, razvrstavanje po uslugama</li>
+      <li>Kompresija slika i prelazak na savremeni format — ušteda oko 70% težine</li>
+      <li>Kalkulator cene krečenja po kvadraturi</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-when">Meseci 4–6</span><h3>Širenje mreže</h3></div>
+    <p class="ph-goal">Cilj: pokriti grad i ući u upite o cenama.</p>
+    <ul class="clean">
+      <li>Još 15–20 stranica po delovima grada, prema prvim rezultatima</li>
+      <li>Stranica za poslovne prostore i upravnike zgrada (B2B)</li>
+      <li>Pokretanje bloga: cene, razlika između gletovanja i krečenja, buđ na zidu, izbor boje</li>
+      <li>Prikupljanje recenzija kao redovan proces posle svakog završenog posla</li>
+      <li>Fotografije „pre i posle“ sa konkretnim objektima i kvadraturom</li>
+    </ul>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-when">Meseci 7–12</span><h3>Učvršćivanje</h3></div>
+    <p class="ph-goal">Cilj: pretraga postaje samostalan kanal koji donosi posao bez dodatnog ulaganja.</p>
+    <ul class="clean">
+      <li>Dovršavanje mreže po delovima grada do 90–110 stranica</li>
+      <li>Redovno osvežavanje cena i sadržaja prema sezoni</li>
+      <li>Rad na spoljnim pominjanjima: lokalni katalozi, saradnja sa agencijama za nekretnine</li>
+      <li>Mesečno izveštavanje: pozicije, saobraćaj, zahtevi, cena po zahtevu</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 9. OGLASAVANJE ============ -->
+<section id="oglasavanje">
+  <span class="sec-num">09 — KONTEKSTUALNO OGLAŠAVANJE</span>
+  <h2>Google Ads — dok pretraga ne krene</h2>
+  <p>
+    Pored optimizacije za pretragu, <b>vodimo i kontekstualno oglašavanje</b> — Google Ads i oglase
+    na mapi. To nije zamena za SEO, nego njegova dopuna, i rešava jedan konkretan problem.
+  </p>
+
+  <div class="note warn">
+    <div class="t">SEO ne daje rezultat prvog dana</div>
+    <p>Prve pomake u pretrazi vidite nakon 2–3 meseca, ozbiljan tok zahteva nakon 5–6. To je priroda
+      kanala i niko to ne može da ubrza. Kontekstualno oglašavanje radi od prvog dana — oglas se
+      pojavljuje odmah, na upite koje sami biramo.</p>
+  </div>
+
+  <h3>Kako to izgleda u praksi</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Period</th><th>Google Ads</th><th>SEO</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap"><b>Mesec 1–2</b></td><td>Nosi ceo tok zahteva. Oglasi na najvrednije upite: <code>moler Beograd</code>, <code>krečenje stana</code>, <code>hitno krečenje</code>.</td><td>Radi se tehnika i temelj, rezultata još nema.</td></tr>
+        <tr><td class="nowrap"><b>Mesec 3–6</b></td><td>Ostaje na skupim i sezonskim upitima, budžet se sužava na ono što se isplati.</td><td>Počinje da donosi prve zahteve i raste.</td></tr>
+        <tr><td class="nowrap"><b>Mesec 7+</b></td><td>Koristi se tačkasto: sezonski vrhunci, nove usluge, delovi grada gde pretraga još nije ojačala.</td><td>Nosi glavninu zahteva, bez cene po kliku.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Zašto su ova dva kanala jači zajedno</h3>
+  <ul class="clean">
+    <li><b>Oglašavanje daje podatke za SEO.</b> Za mesec dana tačno znamo koji upiti donose pozive, a koji samo klikove. Te podatke odmah ugrađujemo u plan stranica — umesto da ih pogađamo.</li>
+    <li><b>Ista stranica radi za oba kanala.</b> Popravke koje radimo zbog pretrage — forma, recenzije, kalkulator, brzina — direktno obaraju cenu po zahtevu u oglasima.</li>
+    <li><b>Dvostruka prisutnost u rezultatima.</b> Kada se isti upit pokrije i oglasom i prirodnim rezultatom, ukupan broj klikova je veći nego zbir ta dva odvojeno.</li>
+    <li><b>Oglašavanje se gasi i pali po potrebi.</b> U sezoni pojačavamo, van sezone smanjujemo. SEO rezultat u međuvremenu ostaje.</li>
+  </ul>
+
+  <div class="note info">
+    <div class="t">Važan redosled</div>
+    <p>Oglase ne puštamo na sajt kakav je danas. Plaćati klik koji dolazi na stranicu bez forme
+      znači bacati novac. Zato se oglašavanje pokreće tek posle prvog meseca, kada su forma, mapa
+      i stranice spremni — tada svaki uloženi dinar ima gde da sleti.</p>
+  </div>
+</section>
+
+<!-- ============ 10. SARADNJA ============ -->
+<section id="saradnja">
+  <span class="sec-num">10 — SARADNJA</span>
+  <h2>Kako radimo i šta to košta</h2>
+
+  <!-- ====== IZMENITI CENU OVDE AKO TREBA ====== -->
+  <div class="pricebox">
+    <div class="amt">300 € <small>/ mesečno</small></div>
+    <p style="margin:14px 0 0; color:var(--ink-2); max-width:62ch">
+      Kompletno vođenje pretrage, celim timom — tehnički rad, pisanje i postavljanje stranica,
+      rad na profilu firme i mapi, mesečno izveštavanje. Bez skrivenih stavki i bez naplate po satu.
+    </p>
+    <p class="muted" style="margin-top:10px">
+      Budžet za Google Ads se dogovara posebno i ide direktno Google-u — mi ga vodimo, ne uzimamo
+      proviziju od potrošnje.
+    </p>
+  </div>
+
+  <h3>Šta je uključeno</h3>
+  <div class="grid g2">
+    <ul class="clean check" style="margin:0">
+      <li>Tehnički rad na sajtu i ispravke</li>
+      <li>Pisanje i objavljivanje novih stranica</li>
+      <li>Naslovi, opisi, strukturirani podaci</li>
+      <li>Rad sa fotografijama i galerijom</li>
+    </ul>
+    <ul class="clean check" style="margin:0">
+      <li>Google profil firme i prikupljanje recenzija</li>
+      <li>Praćenje pozicija i konkurencije</li>
+      <li>Mesečni izveštaj razumljivim jezikom</li>
+      <li>Vođenje Google Ads kampanja po dogovoru</li>
+    </ul>
+  </div>
+
+  <h3>Šta nam treba od vas</h3>
+  <ol class="steps">
+    <li><b>Pristup sajtu</b> — hosting ili kontakt osobe koja ga održava.</li>
+    <li><b>Pristup Google Search Console-u i Google profilu firme</b>, ili dozvola da ih napravimo.</li>
+    <li><b>Fotografije radova</b> — što više, sa podatkom gde je rađeno i koje kvadrature. To je najvredniji materijal koji imate.</li>
+    <li><b>Petnaestak minuta mesečno</b> za kratak razgovor o rezultatima i prioritetima.</li>
+  </ol>
+
+  <hr class="soft">
+
+  <h3>Prvi korak</h3>
+  <p>
+    Predlažemo da krenemo od prvog meseca iz plana — forma, mapa, tehnički red i Google profil.
+    To je deo koji se najbrže vidi i koji daje rezultat nezavisno od svega ostalog. Ako posle
+    toga ne budete zadovoljni, prekidamo bez obaveza.
+  </p>
+  <a class="cta" href="#rezime">Vratite se na rezime nalaza</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0"><b>SEO analiza sajta molerski.com</b> — oktobar 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
